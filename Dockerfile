@@ -12,3 +12,5 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Default command to run tests
 CMD ["pytest", "--maxfail=1", "--disable-warnings", "-q"]
+CMD ["python", "metrics_exporter.py"]
+

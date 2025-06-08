@@ -1,0 +1,21 @@
+name: Dockerized Pytest CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: docker build -t pytest_project .
+
+    - name: Run tests inside container
+      run: docker run --rm pytest_project
